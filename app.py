@@ -1,115 +1,108 @@
 import streamlit as st
-import time
-import os
-from ENTREVISTA_CONSCIENCIA_PRO import AnitaCerebroConsciencia
-from ANITA_INPUT_DISCERNIMIENTO import DiscernimientoAnita
 
-# 1. CONFIGURACIÓN DE ALTA GAMA
-st.set_page_config(page_title="HTV GLOBAL AI | SUPREMACÍA", page_icon="🕊️", layout="wide")
+# Configuración de Página para ocultar todo rastro de Streamlit estándar
+st.set_page_config(page_title="HTV Global AI | Custodia de Consciencia", page_icon="🏛️", layout="centered")
 
-# 2. INYECCIÓN DE ESTÉTICA DE LUJO (CSS)
+# --- INYECCIÓN DE IDENTIDAD CORPORATIVA HTV (CSS) ---
 st.markdown("""
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400&display=swap');
-    
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400&display=swap');
+
     .stApp {
-        background: radial-gradient(circle at center, #1a3a3d 0%, #0a0f10 100%);
-        color: #e0e0e0;
+        background-color: #000000;
+        color: #FFFFFF;
         font-family: 'Inter', sans-serif;
     }
-    
-    .main-title {
-        font-family: 'Playfair Display', serif;
-        font-size: 3rem;
-        color: #5fb1b7;
+
+    /* Títulos con la elegancia de htvglobal.ai */
+    h1, h2, h3 {
+        font-family: 'Playfair Display', serif !important;
+        font-weight: 400 !important;
+        letter-spacing: 1px !important;
+        color: #FFFFFF !important;
         text-align: center;
-        margin-bottom: 2rem;
-    }
-    
-    .glass-card {
-        background: rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(15px);
-        border-radius: 20px;
-        padding: 30px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    
-    .anita-msg {
-        font-family: 'Playfair Display', serif;
-        font-size: 1.5rem;
-        color: #5fb1b7;
-        font-style: italic;
     }
 
-    .stButton>button {
-        background: linear-gradient(90deg, #2C5D63 0%, #5fb1b7 100%);
-        color: white; border-radius: 50px; border: none; padding: 12px;
-        font-weight: bold; width: 100%; transition: 0.3s;
+    /* Subtítulos Dorados (Arquitecto Emocional) */
+    .gold-text {
+        color: #C5A059; /* Dorado HTV */
+        text-align: center;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        margin-bottom: 2rem;
     }
-    .stButton>button:hover { box-shadow: 0px 0px 20px #5fb1b7; transform: scale(1.02); }
+
+    /* Contenedores de la Bóveda */
+    div[data-testid="stVerticalBlock"] > div {
+        background: transparent;
+        border: none;
+    }
+
+    /* Botones Minimalistas de Alta Gama */
+    .stButton>button {
+        background-color: transparent !important;
+        color: #FFFFFF !important;
+        border: 1px solid #333333 !important;
+        border-radius: 0px !important; /* Cuadrado arquitectónico */
+        padding: 15px 30px !important;
+        width: 100%;
+        transition: all 0.4s ease;
+        font-family: 'Inter', sans-serif;
+        letter-spacing: 2px;
+        font-size: 0.7rem;
+    }
+    
+    .stButton>button:hover {
+        border-color: #C5A059 !important;
+        color: #C5A059 !important;
+        background-color: rgba(197, 160, 89, 0.05) !important;
+    }
+
+    /* Ocultar interfaz genérica */
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
+    .stDeployButton {display:none;}
     </style>
     """, unsafe_allow_html=True)
 
-# 3. FUNCIÓN DE CARGA SEGURA DE ACTIVOS
-def mostrar_activo(ruta, tipo="imagen", ancho=None):
-    if os.path.exists(ruta):
-        if tipo == "imagen":
-            st.image(ruta, width=ancho)
-        elif tipo == "video":
-            st.video(ruta)
-    else:
-        st.warning(f"⚠️ Activo no encontrado: {ruta}")
+# --- CABECERA (LOGOTIPO Y TÍTULO) ---
+# Aquí usamos el concepto de "Arquitecto Emocional" de tu landing
+st.markdown("<div style='text-align: center; padding-top: 2rem;'>", unsafe_allow_html=True)
+# Intentamos cargar una imagen que represente el logo si no tenemos el link directo al .png
+st.markdown("<h1 style='font-size: 2.5rem;'>HÁGASE TU VOLUNTAD</h1>", unsafe_allow_html=True)
+st.markdown("<p class='gold-text'>HTV GLOBAL AI | CUSTODIO DE LEGADO</p>", unsafe_allow_html=True)
+st.markdown("</div>", unsafe_allow_html=True)
 
-# 4. GESTIÓN DE ESTADO
-if 'cerebro' not in st.session_state:
-    st.session_state.cerebro = AnitaCerebroConsciencia("Enrique")
-    st.session_state.discernidor = DiscernimientoAnita()
-    st.session_state.step = "BIENVENIDA"
+st.markdown("<br><br>", unsafe_allow_html=True)
 
-# --- INTERFAZ CINEMATOGRÁFICA ---
-st.markdown("<h1 class='main-title'>Hágase Tu Voluntad</h1>", unsafe_allow_html=True)
-
-col_vid, col_ui = st.columns([1.7, 1])
-
-with col_vid:
-    mostrar_activo("assets/Anita_Bienvenida.mp4", tipo="video")
-
-with col_ui:
-    st.markdown("<div class='glass-card'>", unsafe_allow_html=True)
+# --- CUERPO CENTRAL: ANITA ---
+col1, col2, col3 = st.columns([0.5, 2, 0.5])
+with col2:
+    # Imagen de impacto (Anita como entidad de consciencia)
+    # Reemplazaremos esta URL por una imagen que evoque la sobriedad de tu web
+    st.image("https://images.unsplash.com/photo-1507608869274-d3177c8bb4c7?q=80&w=2070&auto=format&fit=crop", 
+             caption=None, use_container_width=True)
     
-    if st.session_state.step == "BIENVENIDA":
-        mostrar_activo("assets/logo_firma_nueva.png", ancho=300)
-        st.markdown("### Protocolo de Identidad")
-        nombre = st.text_input("Nombre del Titular", placeholder="Tu nombre completo")
-        if st.button("ABRIR BÓVEDA"):
-            if nombre:
-                st.session_state.usuario = nombre
-                st.session_state.step = "ENTREVISTA"
-                st.rerun()
-                
-    elif st.session_state.step == "ENTREVISTA":
-        # Anita lanza la pregunta desde el cerebro de consciencia
-        if 'current_q' not in st.session_state:
-            st.session_state.current_q = st.session_state.cerebro.flujo_conversacion()
-        
-        st.markdown(f"<p class='anita-msg'>'{st.session_state.current_q}'</p>", unsafe_allow_html=True)
-        
-        user_reply = st.chat_input("Escribe o usa tu voz...")
-        
-        if user_reply:
-            # Discernimiento de estado (Miedo/Indiferencia/Consciencia)
-            estado, feedback = st.session_state.discernidor.analizar_estado(user_reply)
-            
-            if estado != "CONSCIENCIA_PLENA":
-                st.info(feedback)
-                time.sleep(1)
-            
-            # Avanzar en el árbol de decisión
-            st.session_state.current_q = st.session_state.cerebro.flujo_conversacion(user_reply)
-            st.rerun()
+    st.markdown("<p style='text-align: center; font-style: italic; color: #888; font-size: 0.9rem;'>Iniciando Protocolo de Consciencia Activa...</p>", unsafe_allow_html=True)
 
-    st.markdown("</div>", unsafe_allow_html=True)
+st.markdown("<br>", unsafe_allow_html=True)
 
-# Sello final en el pie de página
-st.markdown("---")
-mostrar_activo("assets/Logo_Sello_HTV_3d_Oficial.jpg", ancho=120)
+# --- INTERACCIÓN ---
+st.markdown("### Seleccione su Estándar Ético")
+
+c1, c2, c3 = st.columns(3)
+with c1:
+    if st.button("CERTIFICACIÓN"):
+        st.info("Accediendo a la custodia de testimonio...")
+with c2:
+    if st.button("LEGADO DIGITAL"):
+        st.info("Abriendo archivos de trascendencia...")
+with c3:
+    if st.button("DESPEDIDA DIGNA"):
+        st.info("Configurando ritos y protocolos...")
+
+st.markdown("<br><br>", unsafe_allow_html=True)
+st.markdown("<hr style='border-color: #222;'>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; color: #444; font-size: 0.7rem; letter-spacing: 2px;'>© 2019 | 2025 HTV GLOBAL AI • INFRAESTRUCTURA EMOCIONAL</p>", unsafe_allow_html=True)
