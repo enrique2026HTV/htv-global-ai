@@ -1,4 +1,0 @@
-Streamlit
-requests
-google-cloud-aiplatform
-python-dotenv 
